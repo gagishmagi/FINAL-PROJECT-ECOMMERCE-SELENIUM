@@ -7,7 +7,7 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 
 browsers = [
     {
-        "platform": "Windows 7 64-bit",
+        "platform": "Linux Ubuntu 18.04",
         # "browserName": "Internet Explorer",
         "browserName": "Firefox",
         "version": "10",

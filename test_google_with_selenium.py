@@ -32,7 +32,7 @@ def driver():
         driver = webdriver.Remote("http://localhost:4444",desired_capabilities=dc, options=firefox_options)
 
     elif browser_name == "brave":
-        # options.add_argument("--headless")
+        options.add_argument("--headless")
         options.add_argument("--disable-gpu")
         dc = {
             "browserName": "chrome",

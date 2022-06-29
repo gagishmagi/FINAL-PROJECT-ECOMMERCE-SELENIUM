@@ -1,3 +1,8 @@
 .idea
+selenium-server-4.3.0.jar
 jenkins.war
 venv
+.pytest_cache
+__pycache__/
+chromedriver
+geckodriver

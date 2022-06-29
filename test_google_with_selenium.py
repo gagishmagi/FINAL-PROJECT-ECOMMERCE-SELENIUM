@@ -7,29 +7,33 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 
 
 @pytest.fixture()
-def driver(browsersName):
+def driver():
     firefox_driver_binary = "./drivers/geckodriver"
     ser_firefox = FirefoxService(firefox_driver_binary)
+    firefox_options = FireFoxOptions()
 
     brave_path = "/usr/bin/brave-browser"
     options = webdriver.ChromeOptions()
     options.binary_location = brave_path
 
-    browser_name = browsersName
+    browser_name = "firefox"
 
     # if isinstance(browserName,list):
     #     for browser_name in browserName:
     if browser_name == "firefox-webdriver":
         driver = webdriver.Firefox(service=ser_firefox)
     elif browser_name == "firefox":
+        firefox_options.add_argument("--headless")
         dc = {
             "browserName": "firefox",
             # "browserVersion": "101.0.1(x64)",
             "platformName": "LINUX"
         }
-        driver = webdriver.Remote("http://localhost:4444",desired_capabilities=dc)
+        driver = webdriver.Remote("http://localhost:4444",desired_capabilities=dc, options=firefox_options)
 
     elif browser_name == "brave":
+        options.add_argument("--headless")
+        options.add_argument("--disable-gpu")
         dc = {
             "browserName": "chrome",
             "platformName": "LINUX"
@@ -128,5 +132,6 @@ def driver(browsersName):
 def test_google_page_title(driver):
     driver.get('https://www.google.com')
     title = driver.title
+    # driver.save_screenshot("test_google_title.png")
     assert title == str.title("google")
 

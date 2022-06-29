@@ -23,7 +23,7 @@ def driver():
     if browser_name == "firefox-webdriver":
         driver = webdriver.Firefox(service=ser_firefox)
     elif browser_name == "firefox":
-        firefox_options.add_argument("--headless")
+        # firefox_options.add_argument("--headless")
         dc = {
             "browserName": "firefox",
             # "browserVersion": "101.0.1(x64)",

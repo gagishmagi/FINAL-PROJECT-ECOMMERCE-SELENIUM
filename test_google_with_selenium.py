@@ -133,5 +133,5 @@ def test_google_page_title(driver):
     driver.get('https://www.google.com')
     title = driver.title
     # driver.save_screenshot("test_google_title.png")
-    assert title == str.title("google!")
+    assert title == str.title("google")
 
